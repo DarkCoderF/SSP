@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block content%}
+	<div class="center">
+	  <form method="post" novaldiate class="card">
+	  	{% csrf_token %}
+	    <h2 class="text-center">ساخت حساب جدید(غیرفعال)</h2>
+		{% for field in userinfo_form %}
+	    		{{ field.label_tag }} 
+	        	{{ field }}
+	        	{% if field.errors %}
+	        		<small class="error">{{ field.errors|striptags  }}</small> 
+	        	{% endif %}
+		{% endfor %}
+		
+		<h3 class="btn btn-primary full-width">ثبت</h3>
+		{% comment %} <input type="submit" value="ثبت" class="btn btn-primary full-width"> {% endcomment %}
+		<hr>
+		</form>
+	</div>
+{%endblock content%}

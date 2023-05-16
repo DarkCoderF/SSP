@@ -1,0 +1,60 @@
+{% extends "base.html" %} 
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+{% load jalali_tags %}
+{% block content %}
+
+
+
+<header class="masthead">
+  <div class="container h-100">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <br><br>
+                    <form action="{% url 'articles:list' %}">
+                      <input class="search" type="search" value="{{request.GET.q}}" name="q" placeholder="جستجو" aria-label="جستجو">
+                    </form>
+                    <br><br><br><br><br>
+                    <h1 class="text-white font-weight-bold">{% block title %} {{ object.title }} {% endblock title %}</h1>
+                    <span class="subheading">{{ object.author }} | {{ object.date|to_jalali:'14%y/%m/%d' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</header> 
+
+<div class="container pt-5" >
+  <div class="row">
+    <div id="mypost" class="col card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <!--<h1> {{ object.title }} </h1>-->
+        <div id="content">
+          {{ object.body|safe }}
+        </div>
+        <!-- Ezoic - mid_content - mid_content -->
+        <div id="ezoic-pub-ad-placeholder-102"> </div>
+        <div class="ltr">
+          <strong>Tags:</strong>
+          {% for tag in object.tags.all %}
+          <a href="{% url 'articles:post_tag' tag.slug %}" class="badge tag">
+              {{tag.name}}
+          </a>
+          {% endfor %}
+          <script src="https://utteranc.es/client.js"
+              repo="FDarkCoder/Comments_site"
+              issue-term={{object.title}}
+              theme="github-light"
+              crossorigin="anonymous"
+              async>
+          </script>
+        </div>
+      </div>
+    </div>
+    {% comment %} {% block sidebar %} {% include 'blogapp/sidebar.html' %} {% endblock sidebar %} {% endcomment %}
+  </div>
+</div>
+
+{% endblock content %}

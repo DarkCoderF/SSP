@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{form.media}}
+<div class="center">
+    <h1>
+      نوشتن مقاله جدید
+    </h1>
+    <form method="post" novaldiate class="card" action="{% url 'articles:create' %}" enctype="multipart/form-data">
+      {{form.as_p}}
+      {% csrf_token %}
+      <input type="submit" name="" value="create">
+    </form>
+  </div>
+<script src="{% static 'slugify.js' %}"></script>
+{%endblock%}
