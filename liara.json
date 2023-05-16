@@ -1,0 +1,12 @@
+{
+  "disks": [
+    {
+      "name": "static",
+      "mountTo": "media"
+    },
+    {
+      "name": "sql",
+      "mountTo": "db"
+    }
+  ]
+}
