@@ -20,13 +20,13 @@ class Article(models.Model):
     body = RichTextUploadingField()
     date = models.DateTimeField(auto_now_add = True)
     image = models.ImageField(default='default.jpg',blank=True,upload_to='cover_images/')
-    author = models.ForeignKey(User,default=None,on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS_CHOICES, default=DRAFT,verbose_name='وضعیت')
+    author = models.ForeignKey(User,default=None,on_delete=models.CASCADE,null=True)
+    status = models.CharField(max_length=7, choices=STATUS_CHOICES, default=PUBLISH,verbose_name='وضعیت')
     def __str__(self):
         return self.title
 
     def snippet(self):
         return self.subheading[:50] + ' ...'
     
-    def get_absolute_url(self): #Required to use sitemaps framework (good for SEO)
+    def get_absolute_url(self):
         return reverse("articles:detail", kwargs={"slug": self.slug})

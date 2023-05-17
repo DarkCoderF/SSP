@@ -31,7 +31,7 @@ def articles_list(request, tag_slug=None):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     
-    return render(request, 'articles/articleslist.html', {'posts':posts, 'tag':tag, 'pages':page})
+    return render(request, 'articles/posts.html', {'posts':posts, 'tag':tag, 'pages':page})
 
 
 
@@ -41,7 +41,7 @@ def articles_list(request, tag_slug=None):
 
 class PostDetail(DetailView):
     model = Article
-    template_name = 'articles/article_detail.html'
+    template_name = 'articles/single-post.html'
 
 
 @login_required(login_url = "/accounts/login")
@@ -59,4 +59,4 @@ def create_article(request):
             return redirect('articles:list')
     else:
         form = forms.CreateArticle()
-    return render(request , 'articles/create_article.html',{'form':form})
+    return render(request , 'articles/post_form.html',{'form':form})

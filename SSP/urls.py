@@ -14,7 +14,7 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articles/' , include('articles.urls')),
-    path('accounts/',include('accounts.urls')),
+    path('account/',include('users.urls')),
     path('', posts),
     path('ckeditor/',include('ckeditor_uploader.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap')

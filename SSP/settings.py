@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*=3crs3eq8u=gw)t+(4c+q^o+qgjf6e!+80_5_^z&v9717jvt5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', 'django.contrib.sitemaps', # Site map For Good Seo
-    'articles','accounts',
+    'articles', 'users',
     'ckeditor','ckeditor_uploader', #WYSIWYG Editor
     'taggit',
     'jalali_date',
@@ -233,8 +233,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_HOST = "smtp.elasticemail.com"
 # EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'your_email_user')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'your_email_password')
+# EMAIL_PORT = 2525
+# EMAIL_HOST_USER = 'Dark.Cs.Coder@gmail.com'
+# EMAIL_HOST_PASSWORD = 'DB282A892FAA211919854BDE59D381913C47'
